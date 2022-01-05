@@ -1,6 +1,0 @@
-module Pods_LemonChallenge {
-  umbrella header "Pods-LemonChallenge-umbrella.h"
-
-  export *
-  module * { export * }
-}
