@@ -1,17 +1,24 @@
 {
   "name": "lemonchallenge",
+  "author": "Matias Simone",
+  "license": "MIT License",
   "version": "0.0.1",
   "private": true,
   "scripts": {
     "android": "react-native run-android",
     "ios": "react-native run-ios",
     "start": "react-native start",
+    "clean": "bash ./scripts/clean-install.sh",
+    "pod": "bash ./scripts/pod-install.sh",
     "test": "jest",
     "lint": "eslint ."
   },
   "dependencies": {
+    "@react-native-google-signin/google-signin": "^7.0.4",
+    "@react-navigation/native": "^6.0.6",
     "react": "17.0.2",
-    "react-native": "0.66.4"
+    "react-native": "0.66.4",
+    "zustand": "^3.6.8"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",

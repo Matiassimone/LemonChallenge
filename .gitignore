@@ -33,8 +33,10 @@ bower_components
 build/Release
 
 # Dependency directories
-node_modules/
 jspm_packages/
+node_modules/
+npm-debug.log
+yarn-error.log
 
 # TypeScript v1 declaration files
 typings/
@@ -74,3 +76,49 @@ typings/
 
 # FuseBox cache
 .fusebox/
+
+# OSX
+.DS_Store
+
+# Xcode
+build/
+*.pbxuser
+!default.pbxuser
+*.mode1v3
+!default.mode1v3
+*.mode2v3
+!default.mode2v3
+*.perspectivev3
+!default.perspectivev3
+xcuserdata
+*.xccheckout
+*.moved-aside
+DerivedData
+*.hmap
+*.ipa
+*.xcuserstate
+
+# Android/IntelliJ
+build/
+.idea
+.gradle
+local.properties
+*.iml
+*.hprof
+
+# BUCK
+buck-out/
+\.buckd/
+*.keystore
+!debug.keystore
+
+# fastlane
+*/fastlane/report.xml
+*/fastlane/Preview.html
+*/fastlane/screenshots
+
+# Bundle artifact
+*.jsbundle
+
+# CocoaPods
+/ios/Pods/
