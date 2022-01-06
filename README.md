@@ -1,5 +1,7 @@
 # LemonChallenge
 
+## Techs
+
 - https://bundler.io/
 
 ```
@@ -20,4 +22,30 @@ Don't disregard it because it's cute. It has quite the claws, lots of time was s
 
 ```
 Hermes is an open-source JavaScript engine optimized for React Native. For many apps, enabling Hermes will result in improved start-up time, decreased memory usage, and smaller app size. At this time Hermes is an opt-in React Native feature, and this guide explains how to enable it.
+```
+
+- https://reactnavigation.org/
+
+```
+Routing and navigation for Expo and React Native apps.
+```
+
+- https://github.com/react-native-google-signin/google-signin
+
+```
+Google Sign-in for your React Native applications
+```
+
+## Scripts
+
+- clean-instal.sh
+
+```
+Clears app caches and reinstalls all dependencies
+```
+
+- pod-instal.sh
+
+```
+Install all pods dependencies
 ```
