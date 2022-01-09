@@ -7,7 +7,7 @@
   "scripts": {
     "android": "react-native run-android",
     "ios": "react-native run-ios",
-    "start": "react-native start",
+    "start": "NODE_ENV='development' react-native start -- --reset-cache",
     "clean": "bash ./scripts/clean-install.sh",
     "pod": "bash ./scripts/pod-install.sh",
     "test": "jest",
@@ -20,8 +20,10 @@
     "@react-navigation/native-stack": "^6.2.5",
     "react": "17.0.2",
     "react-native": "0.66.4",
+    "react-native-keychain": "^8.0.0",
     "react-native-safe-area-context": "^3.3.2",
     "react-native-screens": "^3.10.1",
+    "react-native-sensitive-info": "^6.0.0-alpha.9",
     "react-native-vector-icons": "^9.0.0",
     "zustand": "^3.6.8"
   },

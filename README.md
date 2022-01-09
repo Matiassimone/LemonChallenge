@@ -36,6 +36,18 @@ Routing and navigation for Expo and React Native apps.
 Google Sign-in for your React Native applications
 ```
 
+- https://www.npmjs.com/package/react-native-keychain
+
+```
+Keychain Access for React Native
+```
+
+- https://mcodex.dev/react-native-sensitive-info/
+
+```
+react-native-sensitive-info
+```
+
 ## Scripts
 
 - clean-instal.sh

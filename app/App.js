@@ -1,14 +1,12 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import {StatusBar, StyleSheet} from 'react-native';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
-import {
-  useGoogleSignConfig,
-  useIsSignedIn,
-} from './services/google-sign-service';
+import {useSignStore} from './store/sign-store';
+import * as signSelectors from './selectors/sign-selectors';
 
 import LoggedStackScreens from './screens/logged-stack-screens';
 import UnloggedStackScreens from './screens/unlogged-stack-screens';
@@ -16,8 +14,15 @@ import UnloggedStackScreens from './screens/unlogged-stack-screens';
 const Stack = createNativeStackNavigator();
 
 const App = () => {
-  useGoogleSignConfig();
-  const isSignedIn = useIsSignedIn();
+  const fetchStorageData = useSignStore(signSelectors.fetchStorageData);
+  const googleSignConfig = useSignStore(signSelectors.googleSignConfig);
+
+  useEffect(() => {
+    fetchStorageData();
+    googleSignConfig();
+  }, [fetchStorageData, googleSignConfig]);
+
+  const isSignedIn = useSignStore(signSelectors.signed);
 
   return (
     <SafeAreaProvider style={styles.container}>

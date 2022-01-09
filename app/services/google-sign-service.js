@@ -3,10 +3,15 @@ import {
   statusCodes,
 } from '@react-native-google-signin/google-signin';
 
+import {devLogger} from './log-service';
+
+import {createStandardResponse} from '../helpers/services-helper';
+
 /**
+ * It is mandatory to call this method before attempting to call useSignIn().
+ * ---
  * @param {Object} options
- * Object that can contain the following props :
- *
+ * Object that can contain the following props
  * ```
  * // [Android] what API you want to access on behalf of the user, default is email and profile
  * scopes: ['https://www.googleapis.com/auth/drive.readonly'],
@@ -39,33 +44,77 @@ import {
  * profileImageSize: 120,
  * ```
  */
-export const useGoogleSignConfig = options => {
+export const useGoogleSignConfig = (options = {}) => {
   GoogleSignin.configure({
     ...options,
   });
 };
 
 /**
+ * Prompts a modal to let the user sign in into your application.
+ * ---
+ * @param {String} loginHint
+ * [iOS] The user's ID, or email address,
+ * to be prefilled in the authentication UI if possible.
  *
+ * @returns `Object` standard response
  */
-export const useSignIn = async () => {
+export const useSignIn = async (loginHint = '') => {
   try {
     await GoogleSignin.hasPlayServices();
-    const userInfo = await GoogleSignin.signIn();
-    this.setState({userInfo});
+    const userInfo = await GoogleSignin.signIn(loginHint);
+    return createStandardResponse(userInfo);
   } catch (error) {
-    if (error.code === statusCodes.SIGN_IN_CANCELLED) {
-      // user cancelled the login flow
-    } else if (error.code === statusCodes.IN_PROGRESS) {
-      // operation is in progress already
-    } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
-      // play services not available or outdated
-    } else {
-      // some other error happened
-    }
+    return createStandardResponse(error.code, error);
   }
 };
 
-export const useIsSignedIn = () => {
-  return true;
+/**
+ * SignIn Silently
+ * ---
+ * @returns `Object` standard response
+ */
+export const useSignInSilently = async () => {
+  try {
+    const userInfo = await GoogleSignin.signInSilently();
+    return createStandardResponse(userInfo);
+  } catch (error) {
+    return createStandardResponse(error.code, error);
+  }
+};
+
+/**
+ * This method may be used to find out whether some user is currently signed in.
+ * ---
+ * @returns `Boolean` isSignedIn
+ */
+export const useIsSignedIn = async () => {
+  const isSignedIn = await GoogleSignin.isSignedIn();
+  return isSignedIn;
+};
+
+/**
+ * This method resolves with null or userInfo object.
+ * ---
+ * @returns `Object` standard response
+ */
+export const useGetCurrentUser = async () => {
+  const currentUser = await GoogleSignin.getCurrentUser();
+  return currentUser
+    ? createStandardResponse(currentUser)
+    : createStandardResponse(statusCodes.SIGN_IN_REQUIRED, true);
+};
+
+/**
+ * Signs out the current user.
+ * ---
+ * @returns `Object` standard response
+ */
+export const useSignOut = async () => {
+  try {
+    await GoogleSignin.signOut();
+    return createStandardResponse('SignedOut');
+  } catch (error) {
+    return createStandardResponse(error, true);
+  }
 };
