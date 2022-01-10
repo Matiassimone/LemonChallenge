@@ -1,4 +1,5 @@
 export const signed = state => state.signed;
+export const signinInProgress = state => state.signinInProgress;
 export const error = state => state.error;
 
 export const userInfo = state => state.userInfo;
@@ -11,3 +12,4 @@ export const userEmail = state => state.userInfo.user.email;
 
 export const fetchStorageData = state => state.fetchStorageData;
 export const googleSignConfig = state => state.googleSignConfig;
+export const useSignIn = state => state.useSignIn;

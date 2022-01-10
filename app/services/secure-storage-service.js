@@ -15,7 +15,7 @@ const keychainService = 'lemonSecureKeyChain';
  * @returns Promise<null>
  */
 export const setSecureItem = async (key, value, options = {}) =>
-  SInfo.setItem(key, value, {
+  SInfo.setItem(key, JSON.stringify(value), {
     ...options,
     sharedPreferencesName,
     keychainService,
@@ -28,28 +28,32 @@ export const setSecureItem = async (key, value, options = {}) =>
  * Key value.
  * @param {Object} options
  * Object with option, see the following page to see the complete list https://mcodex.dev/react-native-sensitive-info/docs/ios_options/
- * @returns Promise<string>
+ * @returns Item from the Secure Storage
  */
 export const getSecureItem = async (key, options = {}) =>
-  SInfo.getItem(key, {
-    ...options,
-    sharedPreferencesName,
-    keychainService,
-  });
+  JSON.parse(
+    await SInfo.getItem(key, {
+      ...options,
+      sharedPreferencesName,
+      keychainService,
+    }),
+  );
 
 /**
  * Get all values from the secure Storage.
  * ---
  * @param {Object} options
  * Object with option, see the following page to see the complete list https://mcodex.dev/react-native-sensitive-info/docs/ios_options/
- * @returns Promise<[{key: string, value: string, service: string}]>
+ * @returns Items from the Secure Storage [{key: string, value: string, service: string}]
  */
 export const getAllSecureItems = async (options = {}) =>
-  SInfo.getAllItems({
-    ...options,
-    sharedPreferencesName,
-    keychainService,
-  });
+  JSON.parse(
+    SInfo.getAllItems({
+      ...options,
+      sharedPreferencesName,
+      keychainService,
+    }),
+  );
 
 /**
  * Delete item from the secure Storage.

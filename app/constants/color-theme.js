@@ -1,13 +1,17 @@
-export const darkMode = {
-  background: '#351F39',
-  contrast: '#726A95',
-  hightLightA: '#719FB0',
-  hightLightB: '#A0C1B8',
+export const COLORS_THEMES = {
+  dark: {
+    background: '#351F39',
+    contrast: '#726A95',
+    hightLightA: '#719FB0',
+    hightLightB: '#A0C1B8',
+  },
+  light: {
+    background: '#B590CA',
+    contrast: '#A8D3DA',
+    hightLightA: '#F5CAB3',
+    hightLightB: '#F3ECB8',
+  },
 };
 
-export const lightMode = {
-  background: '#B590CA',
-  contrast: '#A8D3DA',
-  hightLightA: '#F5CAB3',
-  hightLightB: '#F3ECB8',
-};
+export const DARK = 'dark';
+export const LIGHT = 'light';

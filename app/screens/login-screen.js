@@ -5,7 +5,8 @@ import GoogleSignin from '../components/google-signin';
 
 const LoginScreen = () => {
   return (
-    <View>
+    <View style={styles.container}>
+      <View style={styles.container} />
       <GoogleSignin />
     </View>
   );
@@ -13,4 +14,6 @@ const LoginScreen = () => {
 
 export default LoginScreen;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  container: {flex: 1, backgroundColor: 'green'},
+});

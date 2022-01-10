@@ -3,8 +3,6 @@ import {
   statusCodes,
 } from '@react-native-google-signin/google-signin';
 
-import {devLogger} from './log-service';
-
 import {createStandardResponse} from '../helpers/services-helper';
 
 /**
@@ -59,7 +57,7 @@ export const useGoogleSignConfig = (options = {}) => {
  *
  * @returns `Object` standard response
  */
-export const useSignIn = async (loginHint = '') => {
+export const useSignIn = async loginHint => {
   try {
     await GoogleSignin.hasPlayServices();
     const userInfo = await GoogleSignin.signIn(loginHint);
