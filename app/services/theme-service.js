@@ -1,5 +1,5 @@
-import {useColorScheme} from 'react-native';
+import {Appearance} from 'react-native';
 
 export const useSysColorTheme = () => {
-  return useColorScheme();
+  return Appearance.getColorScheme();
 };

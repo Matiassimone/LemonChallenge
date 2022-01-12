@@ -13,3 +13,4 @@ export const userEmail = state => state.userInfo.user.email;
 export const fetchStorageData = state => state.fetchStorageData;
 export const googleSignConfig = state => state.googleSignConfig;
 export const useSignIn = state => state.useSignIn;
+export const useSignOut = state => state.useSignOut;

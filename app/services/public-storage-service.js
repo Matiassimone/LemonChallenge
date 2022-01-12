@@ -28,8 +28,6 @@ export const getPublicItem = async key => {
   } catch (e) {
     devLogger('getPublicItem', e, true);
   }
-
-  devLogger('getPublicItem', key, false);
 };
 
 /**
@@ -42,6 +40,4 @@ export const removeValue = async key => {
   } catch (e) {
     devLogger('removeValue', e, true);
   }
-
-  devLogger('removeValue', key, false);
 };

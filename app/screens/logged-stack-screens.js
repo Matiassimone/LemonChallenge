@@ -1,32 +1,46 @@
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
 
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
+import {useThemeStorage} from '../store/color-theme-store';
+import * as colorThemeSelectors from '../selectors/theme-selectors';
+
 import CountryScreen from './country-screen';
 import ConfirmedCasesScreen from './confirmed-cases-screen';
 import DashboarScreen from './dashboard-screen';
-import AboutScreen from './about-screen';
+import SettingsScreen from './settings-screen';
 
 const Tab = createBottomTabNavigator();
 Icon.loadFont();
 
 const LoggedStackScreens = () => {
+  const backgroundColor = useThemeStorage(colorThemeSelectors.backgroundColor);
+  const contrastColor = useThemeStorage(colorThemeSelectors.contrastColor);
+  const hightLightAColor = useThemeStorage(
+    colorThemeSelectors.hightLightAColor,
+  );
+
   return (
     <Tab.Navigator
       screenOptions={{
         headerShown: false,
-        //tabBarStyle: {backgroundColor: ''},
+        tabBarStyle: {backgroundColor},
+        tabBarActiveTintColor: hightLightAColor,
+        tabBarInactiveTintColor: contrastColor,
       }}>
       <Tab.Screen
         name="Country"
         component={CountryScreen}
         options={{
           tabBarLabel: 'Country',
-          tabBarIcon: ({color, size, focused}) => (
-            <Icon name="earth" color={color} size={size} />
+          tabBarIcon: ({size, focused}) => (
+            <Icon
+              name="earth"
+              color={focused ? hightLightAColor : contrastColor}
+              size={size}
+            />
           ),
         }}
       />
@@ -35,10 +49,12 @@ const LoggedStackScreens = () => {
         component={ConfirmedCasesScreen}
         options={{
           tabBarLabel: 'Confirmed Cases',
-          tabBarActiveTintColor: '',
-          tabBarInactiveTintColor: '',
-          tabBarIcon: ({color, size, focused}) => (
-            <Icon name="virus-outline" color={color} size={size} />
+          tabBarIcon: ({size, focused}) => (
+            <Icon
+              name="virus-outline"
+              color={focused ? hightLightAColor : contrastColor}
+              size={size}
+            />
           ),
         }}
       />
@@ -47,22 +63,26 @@ const LoggedStackScreens = () => {
         component={DashboarScreen}
         options={{
           tabBarLabel: 'Dashboard',
-          tabBarIcon: ({color, size, focused}) => (
+          tabBarIcon: ({size, focused}) => (
             <Icon
               name="view-dashboard-variant-outline"
-              color={color}
+              color={focused ? hightLightAColor : contrastColor}
               size={size}
             />
           ),
         }}
       />
       <Tab.Screen
-        name="About"
-        component={AboutScreen}
+        name="Settings"
+        component={SettingsScreen}
         options={{
-          tabBarLabel: 'About',
-          tabBarIcon: ({color, size, focused}) => (
-            <Icon name="more" color={color} size={size} />
+          tabBarLabel: 'Settings',
+          tabBarIcon: ({size, focused}) => (
+            <Icon
+              name="more"
+              color={focused ? hightLightAColor : contrastColor}
+              size={size}
+            />
           ),
         }}
       />
@@ -71,5 +91,3 @@ const LoggedStackScreens = () => {
 };
 
 export default LoggedStackScreens;
-
-const styles = StyleSheet.create({});

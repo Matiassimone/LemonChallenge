@@ -48,6 +48,18 @@ Keychain Access for React Native
 react-native-sensitive-info
 ```
 
+- https://react-native-async-storage.github.io/async-storage/
+
+```
+Public Data storage system for React Native.
+```
+
+- https://docs.swmansion.com/react-native-reanimated/
+
+```
+React Native's Animated library reimplemented
+```
+
 ## Scripts
 
 - clean-instal.sh

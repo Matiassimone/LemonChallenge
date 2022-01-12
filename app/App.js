@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useEffect} from 'react';
 import {StatusBar, StyleSheet} from 'react-native';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 
@@ -8,25 +8,34 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {useSignStore} from './store/sign-store';
 import * as signSelectors from './selectors/sign-selectors';
 
+import {useThemeStorage} from './store/color-theme-store';
+import * as colorThemeSelectors from './selectors/theme-selectors';
+
 import LoggedStackScreens from './screens/logged-stack-screens';
 import UnloggedStackScreens from './screens/unlogged-stack-screens';
 
 const Stack = createNativeStackNavigator();
 
 const App = () => {
-  const fetchStorageData = useSignStore(signSelectors.fetchStorageData);
+  const fetchSignStorageData = useSignStore(signSelectors.fetchStorageData);
+  const fetchColorStorageData = useThemeStorage(
+    colorThemeSelectors.fetchStorageData,
+  );
+
   const googleSignConfig = useSignStore(signSelectors.googleSignConfig);
 
   useEffect(() => {
-    fetchStorageData();
+    fetchSignStorageData();
+    fetchColorStorageData();
+
     googleSignConfig();
-  }, [fetchStorageData, googleSignConfig]);
+  }, [fetchColorStorageData, fetchSignStorageData, googleSignConfig]);
 
   const isSignedIn = useSignStore(signSelectors.signed);
 
   return (
     <SafeAreaProvider style={styles.container}>
-      <StatusBar />
+      <StatusBar hidden />
       <NavigationContainer>
         <Stack.Navigator>
           {isSignedIn ? (
