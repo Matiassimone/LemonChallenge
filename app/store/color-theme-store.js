@@ -35,7 +35,7 @@ export const useThemeStorage = create((set, get) => ({
       set({
         currentTheme: COLORS_THEMES[nextTheme],
       });
-      setPublicItem(COLORS_THEMES, nextTheme);
+      setPublicItem(COLOR_THEME, nextTheme);
     }
   },
 }));

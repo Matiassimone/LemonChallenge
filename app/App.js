@@ -8,28 +8,15 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {useSignStore} from './store/sign-store';
 import * as signSelectors from './selectors/sign-selectors';
 
-import {useThemeStorage} from './store/color-theme-store';
-import * as colorThemeSelectors from './selectors/theme-selectors';
-
 import LoggedStackScreens from './screens/logged-stack-screens';
 import UnloggedStackScreens from './screens/unlogged-stack-screens';
+
+import {useInitAllStorages} from './helpers/app-helper';
 
 const Stack = createNativeStackNavigator();
 
 const App = () => {
-  const fetchSignStorageData = useSignStore(signSelectors.fetchStorageData);
-  const fetchColorStorageData = useThemeStorage(
-    colorThemeSelectors.fetchStorageData,
-  );
-
-  const googleSignConfig = useSignStore(signSelectors.googleSignConfig);
-
-  useEffect(() => {
-    fetchSignStorageData();
-    fetchColorStorageData();
-
-    googleSignConfig();
-  }, [fetchColorStorageData, fetchSignStorageData, googleSignConfig]);
+  useInitAllStorages();
 
   const isSignedIn = useSignStore(signSelectors.signed);
 
