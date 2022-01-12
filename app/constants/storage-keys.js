@@ -1,0 +1,5 @@
+// SECURE_STORAGE
+export const USER_INFO = 'USER_INFO';
+
+// PUBLIC_STORAGE
+export const COLOR_THEME = 'COLOR_THEME';

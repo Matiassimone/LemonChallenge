@@ -1,7 +1,7 @@
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 
-const LogoutButton = () => {
+const SettingsScreen = () => {
   return (
     <View>
       <Text></Text>
@@ -9,6 +9,6 @@ const LogoutButton = () => {
   );
 };
 
-export default LogoutButton;
+export default SettingsScreen;
 
 const styles = StyleSheet.create({});

@@ -1,14 +1,14 @@
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 
-const LogoutButton = () => {
+const About = () => {
   return (
     <View>
-      <Text></Text>
+      <Text> Made with ❤️, Matias Simone 2021. [covid]</Text>
     </View>
   );
 };
 
-export default LogoutButton;
+export default About;
 
 const styles = StyleSheet.create({});
