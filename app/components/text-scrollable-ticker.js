@@ -19,7 +19,7 @@ const TextScrollableTicker = ({
       loop
       bounce
       scroll
-      style={[smallText, textStyle, {color: luminusWhite}, textStyle]}
+      style={[smallText, {color: luminusWhite}, textStyle]}
       duration={duration}
       scrollSpeed={scrollSpeed}
       isRTL={isRTL}

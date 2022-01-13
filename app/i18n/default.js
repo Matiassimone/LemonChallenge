@@ -13,4 +13,8 @@ export default {
    */
   mainTitleCovid: '[COVID-19]',
   mainTitleAppName: 'Dashboard.',
+  /**
+   * Country Screen
+   */
+  affectedCountries: '////「AFFECTED COUNTRIES」////',
 };

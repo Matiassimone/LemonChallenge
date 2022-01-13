@@ -1,5 +1,5 @@
-import React, {useState, useEffect} from 'react';
-import {ScrollView, StyleSheet, Text, View, SafeAreaView} from 'react-native';
+import React from 'react';
+import {StyleSheet, View, SafeAreaView} from 'react-native';
 
 import CountriesList from '../components/countries-list';
 
@@ -11,17 +11,7 @@ import * as countriesSelectors from '../selectors/countries-selectors';
 
 import TextScrollableTicker from '../components/text-scrollable-ticker';
 
-import {
-  ghostDarkGreen,
-  rubyRed,
-  halfGhostGreen,
-} from '../constants/colors-off-themes';
-import {
-  bigBoldText,
-  bigText,
-  mediumBoldText,
-  smallBoldText,
-} from '../constants/text-styles';
+import {mediumBoldText} from '../constants/text-styles';
 
 import i18n from '../i18n/default';
 
@@ -36,16 +26,13 @@ const CountryScreen = () => {
   const hightLightAColor = useThemeStorage(
     colorThemeSelectors.hightLightAColor,
   );
-  const hightLightBColor = useThemeStorage(
-    colorThemeSelectors.hightLightBColor,
-  );
 
   return (
     <View style={[styles.container, {backgroundColor: contrastColor}]}>
-      <SafeAreaView style={[styles.header, {backgroundColor}]}>
+      <SafeAreaView style={{backgroundColor}}>
         <TextScrollableTicker
-          message={'////「AFFECTED COUNTRIES」////'}
-          textStyle={[mediumBoldText, {color: hightLightAColor}]}
+          message={i18n.affectedCountries}
+          textStyle={[mediumBoldText, {color: hightLightAColor}, styles.header]}
         />
       </SafeAreaView>
 
@@ -61,6 +48,6 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   header: {
-    paddingBottom: 100,
+    paddingBottom: 20,
   },
 });
