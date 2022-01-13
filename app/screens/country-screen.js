@@ -33,6 +33,7 @@ const CountryScreen = () => {
         <TextScrollableTicker
           message={i18n.affectedCountries}
           textStyle={[mediumBoldText, {color: hightLightAColor}, styles.header]}
+          duration={5000}
         />
       </SafeAreaView>
 

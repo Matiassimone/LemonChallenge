@@ -26,7 +26,10 @@ const LoggedStackScreens = () => {
     <Tab.Navigator
       screenOptions={{
         headerShown: false,
-        tabBarStyle: {backgroundColor},
+        tabBarStyle: {
+          backgroundColor,
+          borderTopWidth: 0,
+        },
         tabBarActiveTintColor: hightLightAColor,
         tabBarInactiveTintColor: contrastColor,
       }}>
