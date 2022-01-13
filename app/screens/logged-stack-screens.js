@@ -79,7 +79,7 @@ const LoggedStackScreens = () => {
           tabBarLabel: 'Settings',
           tabBarIcon: ({size, focused}) => (
             <Icon
-              name="more"
+              name="account-circle-outline"
               color={focused ? hightLightAColor : contrastColor}
               size={size}
             />
