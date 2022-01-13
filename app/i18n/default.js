@@ -17,4 +17,8 @@ export default {
    * Country Screen
    */
   affectedCountries: '////「AFFECTED COUNTRIES」////',
+  /**
+   * Dashboard Screen
+   */
+  dashboardCases: '////「DASHBOARD CASES」////',
 };

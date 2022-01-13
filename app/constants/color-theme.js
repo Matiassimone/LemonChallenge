@@ -4,12 +4,14 @@ export const COLORS_THEMES = {
     contrast: '#726A95',
     hightLightA: '#719FB0',
     hightLightB: '#A0C1B8',
+    isDark: true,
   },
   light: {
     background: '#B590CA',
     contrast: '#A8D3DA',
     hightLightA: '#F5CAB3',
     hightLightB: '#F3ECB8',
+    isDark: false,
   },
 };
 

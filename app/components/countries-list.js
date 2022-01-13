@@ -6,7 +6,6 @@ import DictionaryTag from './dictionary-tag';
 
 const CountriesList = ({countries, selectedCountry}) => {
   const stickyHeaderIndices = [];
-  const selectedCountryIndex = countries.indexOf(selectedCountry);
   const ITEM_HEIGHT = 52;
 
   const addDisctionayTagElements = data => {
@@ -33,7 +32,6 @@ const CountriesList = ({countries, selectedCountry}) => {
 
   return (
     <FlatList
-      //initialScrollIndex={selectedCountryIndex ? selectedCountryIndex : 0}
       getItemLayout={getItemLayout}
       data={mappedData}
       stickyHeaderIndices={stickyHeaderIndices}

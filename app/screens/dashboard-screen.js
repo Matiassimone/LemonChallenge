@@ -1,14 +1,75 @@
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, View, SafeAreaView} from 'react-native';
+
+import {WebView} from 'react-native-webview';
+
+import {useThemeStorage} from '../store/color-theme-store';
+import * as colorThemeSelectors from '../selectors/theme-selectors';
+
+import TextScrollableTicker from '../components/text-scrollable-ticker';
+
+import {EMBED_HOPKINS_MAP} from '../constants/endpoints';
+
+import {mediumBoldText} from '../constants/text-styles';
+
+import i18n from '../i18n/default';
 
 const DashboardScreen = () => {
+  const sysTheme = useThemeStorage(colorThemeSelectors.sysTheme);
+
+  const backgroundColor = useThemeStorage(colorThemeSelectors.backgroundColor);
+  const hightLightAColor = useThemeStorage(
+    colorThemeSelectors.hightLightAColor,
+  );
+
+  const queryParamExtent = '97.3846,11.535,163.5174,52.8632';
+  const queryParamZoom = 'true';
+  const queryParamTheme = sysTheme.toLowerCase();
+
+  const source = EMBED_HOPKINS_MAP.GET_MAP_URI(
+    queryParamExtent,
+    queryParamZoom,
+    queryParamTheme,
+  );
+
   return (
-    <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-      <Text>DashboardScreen</Text>
+    <View style={[styles.container, {backgroundColor}]}>
+      <SafeAreaView style={{backgroundColor}}>
+        <TextScrollableTicker
+          message={i18n.dashboardCases}
+          textStyle={[mediumBoldText, {color: hightLightAColor}, styles.header]}
+          duration={5000}
+        />
+      </SafeAreaView>
+
+      <WebView
+        style={{
+          borderColor: backgroundColor,
+          backgroundColor,
+        }}
+        containerStyle={{
+          borderColor: backgroundColor,
+          backgroundColor,
+        }}
+        onShouldStartLoadWithRequest={request =>
+          request.url.startsWith(EMBED_HOPKINS_MAP.BASE_MAP_URI) ? true : false
+        }
+        originWhitelist={['*']}
+        source={{
+          uri: source,
+        }}
+      />
     </View>
   );
 };
 
 export default DashboardScreen;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  header: {
+    paddingBottom: 20,
+  },
+});
