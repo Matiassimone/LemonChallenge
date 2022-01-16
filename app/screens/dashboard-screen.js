@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, View, SafeAreaView} from 'react-native';
+import {StyleSheet, View, SafeAreaView, ActivityIndicator} from 'react-native';
 
 import {WebView} from 'react-native-webview';
 
@@ -34,7 +34,7 @@ const DashboardScreen = () => {
 
   return (
     <View style={[styles.container, {backgroundColor}]}>
-      <SafeAreaView style={{backgroundColor}}>
+      <SafeAreaView style={[styles.fixLogoHidden, {backgroundColor}]}>
         <TextScrollableTicker
           message={i18n.dashboardCases}
           textStyle={[mediumBoldText, {color: hightLightAColor}, styles.header]}
@@ -47,13 +47,22 @@ const DashboardScreen = () => {
           borderColor: backgroundColor,
           backgroundColor,
         }}
-        containerStyle={{
-          borderColor: backgroundColor,
-          backgroundColor,
-        }}
+        containerStyle={[
+          styles.fixLogoHidden,
+          {
+            borderColor: backgroundColor,
+            backgroundColor,
+          },
+        ]}
         onShouldStartLoadWithRequest={request =>
           request.url.startsWith(EMBED_HOPKINS_MAP.BASE_MAP_URI) ? true : false
         }
+        startInLoadingState={true}
+        renderLoading={() => (
+          <View style={[styles.loadingContainer, {backgroundColor}]}>
+            <ActivityIndicator color={hightLightAColor} size="large" />
+          </View>
+        )}
         originWhitelist={['*']}
         source={{
           uri: source,
@@ -68,6 +77,17 @@ export default DashboardScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+  },
+  fixLogoHidden: {
+    bottom: -50,
+  },
+  loadingContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    position: 'absolute',
+    height: '100%',
+    width: '100%',
   },
   header: {
     paddingBottom: 20,

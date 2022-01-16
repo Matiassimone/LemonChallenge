@@ -8,18 +8,44 @@ import {COUNTRY_ENDPOINTS} from '../constants/endpoints';
 import {easyFetch} from '../helpers/fetch-helper';
 import {sortArrayOfObjects} from '../helpers/services-helper';
 
+const selectedCountryCasesModel = {
+  Country: '',
+  CountryCode: '',
+  Province: '',
+  City: '',
+  CityCode: '',
+  Lat: '',
+  Lon: '',
+  Cases: 0,
+  Status: '',
+  Date: '',
+};
+
+const selectedCountryModel = {
+  Country: '',
+  ISO2: '',
+  Slug: '',
+};
+
 export const useCountriesStorage = create((set, get) => ({
-  countries: [],
-  selectedCountry: {},
+  countries: [selectedCountryModel],
+  selectedCountry: selectedCountryModel,
+  selectedCountryCases: [selectedCountryCasesModel],
 
   fetchStorageData: async () => {
+    const fetchSelectedCountryCases = get().fetchSelectedCountryCases;
+    const fetchCountries = get().fetchCountries;
+
     const selectedCountry = await getPublicItem(SELECTED_COUNTRY);
+    await fetchCountries();
 
     selectedCountry
       ? set({selectedCountry: selectedCountry})
       : set({
-          selectedCountry: {},
+          selectedCountry: get().countries[0],
         });
+
+    await fetchSelectedCountryCases();
   },
 
   fetchCountries: async () => {
@@ -30,8 +56,23 @@ export const useCountriesStorage = create((set, get) => ({
     });
   },
 
+  fetchSelectedCountryCases: async () => {
+    const selectedCountry = get().selectedCountry;
+    const json = easyFetch(
+      COUNTRY_ENDPOINTS.GET_CASES_PER_COUNTRY(selectedCountry.Slug),
+    );
+
+    set({selectedCountryCases: await json});
+  },
+
   selectCountry: async country => {
-    set({selectCountry: country});
+    set({selectedCountry: country});
+
+    const json = await easyFetch(
+      COUNTRY_ENDPOINTS.GET_CASES_PER_COUNTRY(country.Slug),
+    );
+    set({selectedCountryCases: await json});
+
     setPublicItem(SELECTED_COUNTRY, country);
   },
 }));

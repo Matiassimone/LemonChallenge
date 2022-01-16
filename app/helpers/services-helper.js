@@ -19,8 +19,14 @@ export const createStandardResponse = (data, error = false) => {
  * @param {*} propertyAccessor
  * @returns
  */
-export const sortArrayOfObjects = (arr, propertyAccessor) => {
+export const sortArrayOfObjects = (arr, propertyAccessor, reverse = false) => {
   return arr.sort((a, b) =>
-    a[propertyAccessor] < b[propertyAccessor] ? -1 : 1,
+    reverse
+      ? a[propertyAccessor] > b[propertyAccessor]
+        ? -1
+        : 1
+      : a[propertyAccessor] < b[propertyAccessor]
+      ? -1
+      : 1,
   );
 };

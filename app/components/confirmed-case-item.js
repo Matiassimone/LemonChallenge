@@ -1,19 +1,20 @@
 import React from 'react';
-import {StyleSheet, Text, TouchableOpacity} from 'react-native';
+import {StyleSheet, Text, View} from 'react-native';
 
 import {useThemeStorage} from '../store/color-theme-store';
 import * as colorThemeSelectors from '../selectors/theme-selectors';
 
 import {smallBoldText} from '../constants/text-styles';
 
-const CountryElement = ({country, itemHeight, onPressCallback}) => {
+import i18n from '../i18n/default';
+
+const ConfirmedCaseItem = ({date, cases, itemHeight}) => {
   const hightLightBColor = useThemeStorage(
     colorThemeSelectors.hightLightBColor,
   );
 
   return (
-    <TouchableOpacity
-      onPress={onPressCallback}
+    <View
       style={[
         styles.listElement,
         {
@@ -21,13 +22,13 @@ const CountryElement = ({country, itemHeight, onPressCallback}) => {
           backgroundColor: hightLightBColor,
         },
       ]}>
-      <Text style={smallBoldText}>{country.ISO2}</Text>
-      <Text>{country.Country}</Text>
-    </TouchableOpacity>
+      <Text style={smallBoldText}>{i18n.cases + cases}</Text>
+      <Text>{date.slice(0, date.indexOf('T'))}</Text>
+    </View>
   );
 };
 
-export default CountryElement;
+export default ConfirmedCaseItem;
 
 const styles = StyleSheet.create({
   listElement: {

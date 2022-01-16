@@ -1,10 +1,16 @@
 import React from 'react';
 import {FlatList} from 'react-native';
 
+import {useCountriesStorage} from '../store/countries-store';
+import * as countriesSelectors from '../selectors/countries-selectors';
+
 import CountryElement from './country-element';
 import DictionaryTag from './dictionary-tag';
 
-const CountriesList = ({countries, selectedCountry}) => {
+const CountriesList = ({navigation}) => {
+  const countries = useCountriesStorage(countriesSelectors.countries);
+  const selectCountry = useCountriesStorage(countriesSelectors.selectCountry);
+
   const stickyHeaderIndices = [];
   const ITEM_HEIGHT = 52;
 
@@ -27,6 +33,11 @@ const CountriesList = ({countries, selectedCountry}) => {
     offset: ITEM_HEIGHT * index,
     index,
   });
+
+  const onPressItem = item => {
+    selectCountry(item);
+    navigation.jumpTo('Confirmed Cases');
+  };
 
   const mappedData = addDisctionayTagElements(countries);
 
@@ -52,6 +63,7 @@ const CountriesList = ({countries, selectedCountry}) => {
               country={item}
               key={slug}
               itemHeight={ITEM_HEIGHT}
+              onPressCallback={() => onPressItem(item)}
             />
           );
         }
