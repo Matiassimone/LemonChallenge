@@ -1,5 +1,7 @@
 export const COUNTRY_ENDPOINTS = {
   GET_COUNTRIES: 'https://api.covid19api.com/countries',
+  GET_CASES_PER_COUNTRY: slug =>
+    `https://api.covid19api.com/total/dayone/country/${slug}/status/confirmed`,
 };
 
 export const EMBED_HOPKINS_MAP = {

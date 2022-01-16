@@ -21,4 +21,17 @@ export default {
    * Dashboard Screen
    */
   dashboardCases: '////「DASHBOARD CASES」////',
+  /**
+   * Confirmed cases List Component
+   */
+  emptyScreen: 'This is one of the few places where COVID-19 has not arrived..',
+  /**
+   * Sort Toolbar Component
+   */
+  sortByDate: 'Sort by Date',
+  sortByCases: 'Sort by Cases',
+  /**
+   * Confirmed cases Item Component
+   */
+  cases: 'Confirmed daily cases: ',
 };

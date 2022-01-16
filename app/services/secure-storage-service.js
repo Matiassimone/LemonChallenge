@@ -74,7 +74,7 @@ export const getAllSecureItems = async (options = {}) => {
  * @returns Promise.
  */
 export const deleteSecureItem = async key =>
-  SInfo.deleteItem(key, {
+  await SInfo.deleteItem(key, {
     sharedPreferencesName,
     keychainService,
   });

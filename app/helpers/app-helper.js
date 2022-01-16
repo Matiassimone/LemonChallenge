@@ -1,3 +1,5 @@
+import {useEffect} from 'react';
+
 import {useSignStore} from '../store/sign-store';
 import * as signSelectors from '../selectors/sign-selectors';
 
@@ -20,21 +22,20 @@ export const useInitAllStorages = () => {
   const fetchCountriesStorageData = useCountriesStorage(
     countriesSelectors.fetchStorageData,
   );
-  const fetchCountries = useCountriesStorage(countriesSelectors.fetchCountries);
 
-  Promise.all([
-    fetchSignStorageData(),
-    googleSignConfig(),
+  useEffect(() => {
+    fetchSignStorageData();
+    googleSignConfig();
 
-    fetchColorStorageData(),
+    fetchColorStorageData();
 
-    fetchCountriesStorageData(),
-    fetchCountries(),
-  ])
-    .then(() => {
-      devLogger('useInitAllStorages', 'App loaded succesfully..', false);
-    })
-    .catch(() => {
-      devLogger('useInitAllStorages', 'App loaded fail..', true);
-    });
+    fetchCountriesStorageData();
+
+    devLogger('useInitAllStorages', 'Initializing all storage..', false);
+  }, [
+    fetchColorStorageData,
+    fetchCountriesStorageData,
+    fetchSignStorageData,
+    googleSignConfig,
+  ]);
 };

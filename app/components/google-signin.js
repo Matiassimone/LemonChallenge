@@ -4,11 +4,7 @@ import {StyleSheet} from 'react-native';
 import {useSignStore} from '../store/sign-store';
 import {useSignIn, signinInProgress} from '../selectors/sign-selectors';
 
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-
 import {GoogleSigninButton} from '@react-native-google-signin/google-signin';
-
-Icon.loadFont();
 
 const GoogleSignin = ({type = 'Standard'}) => {
   const signIn = useSignStore(useSignIn);

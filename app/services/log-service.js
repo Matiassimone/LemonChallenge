@@ -27,7 +27,11 @@ const colorString = (color, string) => {
 const colorLog = (color, ...args) => {
   console.log(
     ...args.map(arg =>
-      typeof arg === 'string' ? colorString(color, arg) : arg,
+      typeof arg === 'string'
+        ? colorString(color, arg)
+        : arg?.length > 50
+        ? `${JSON.stringify(arg).slice(0, 2000)}...`
+        : arg,
     ),
   );
 };
