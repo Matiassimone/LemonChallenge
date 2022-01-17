@@ -1,5 +1,37 @@
-# LemonChallenge
+# LemonChallenge - [COVID-19] Dashboard.
 
+---
+## Color theme and general styling inspiration.
+
+- https://twitter.com/Mitnacht/status/1431232473740939273?ref_src=twsrc%5Etfw%7Ctwcamp%5Etweetembed%7Ctwterm%5E1431232473740939273%7Ctwgr%5E%7Ctwcon%5Es1_&ref_url=https%3A%2F%2Fd-28770521313257465554.ampproject.net%2F2111242025001%2Fframe.html
+
+![image](https://user-images.githubusercontent.com/28985499/149781786-ec5207ba-5c17-47e3-a2f9-5ba94feeaf20.png)
+
+```
+Neon Genesis Evangelion COVID-19 prevention posters on the street. 
+```
+
+- https://espowiki.com/japanese_punctuation
+
+```
+Lettering japanese styling.
+```
+
+---
+## Embed web view COVID-19 Map
+
+- https://www.arcgis.com/apps/dashboards/bda7594740fd40299423467b48e9ecf6
+```
+ The data as the "COVID-19 Data Repository 
+ by the Center for Systems Science and Engineering (CSSE) at Johns Hopkins University" or "JHU CSSE COVID-19 Data"
+```
+
+---
+## Architecture
+
+- All development patterns, directory placement, filenames, and organization as well as separation of logic is on its own merit and use of my experience in react native
+
+---
 ## Techs
 
 - https://bundler.io/
@@ -78,6 +110,7 @@ To generate app icons
 vector icons for react native
 ```
 
+---
 ## Scripts
 
 - clean-instal.sh
