@@ -7,8 +7,8 @@ import {COLOR_THEME} from '../constants/storage-keys';
 import {DARK, LIGHT, COLORS_THEMES} from '../constants/color-theme';
 
 export const useThemeStorage = create((set, get) => ({
-  currentTheme: undefined,
-  sysTheme: undefined,
+  currentTheme: COLORS_THEMES[DARK],
+  sysTheme: DARK,
 
   fetchStorageData: async () => {
     const currentTheme = await getPublicItem(COLOR_THEME);
