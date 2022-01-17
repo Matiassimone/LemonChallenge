@@ -42,7 +42,7 @@ export const getSecureItem = async (key, options = {}) => {
       }),
     );
   } catch (e) {
-    devLogger('getPublicItem', e, true);
+    devLogger('getSecureItem', e, true);
   }
 };
 
@@ -63,7 +63,7 @@ export const getAllSecureItems = async (options = {}) => {
       }),
     );
   } catch (e) {
-    devLogger('getPublicItem', e, true);
+    devLogger('getAllSecureItems', e, true);
   }
 };
 

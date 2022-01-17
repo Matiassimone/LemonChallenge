@@ -47,3 +47,20 @@ export const removeValue = async key => {
     devLogger('removeValue', e, true);
   }
 };
+
+/**
+ * Delete all items from the public Storage.
+ * ---
+ */
+export const removeAllPublicItems = async () => {
+  try {
+    devLogger(
+      'removeAllPublicItems',
+      'All public items has been removed from the public storage.',
+      false,
+    );
+    await AsyncStorage.clear();
+  } catch (e) {
+    devLogger('removeAllPublicItems', e, true);
+  }
+};

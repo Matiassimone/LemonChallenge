@@ -7,7 +7,7 @@ import * as colorThemeSelectors from '../selectors/theme-selectors';
 import {rubyDarkRed} from '../constants/colors-off-themes';
 import {mediumBoldText} from '../constants/text-styles';
 
-const DictionaryTag = ({letter, itemHeight}) => {
+const DictionaryTag = React.memo(({letter, itemHeight}) => {
   const contrastColor = useThemeStorage(colorThemeSelectors.contrastColor);
   const hightLightBColor = useThemeStorage(
     colorThemeSelectors.hightLightBColor,
@@ -28,7 +28,7 @@ const DictionaryTag = ({letter, itemHeight}) => {
       / {letter} /
     </Text>
   );
-};
+});
 
 export default DictionaryTag;
 

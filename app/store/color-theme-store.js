@@ -14,28 +14,32 @@ export const useThemeStorage = create((set, get) => ({
     const currentTheme = await getPublicItem(COLOR_THEME);
     const sysTheme = themeService.useSysColorTheme();
 
-    currentTheme
-      ? set({
-          currentTheme: COLORS_THEMES[currentTheme],
-          sysTheme: sysTheme,
-        })
-      : set({
-          currentTheme: COLORS_THEMES[sysTheme],
-          sysTheme: sysTheme,
-        });
+    if (currentTheme) {
+      set({
+        currentTheme: COLORS_THEMES[currentTheme],
+        sysTheme: currentTheme,
+      });
+    } else {
+      set({
+        currentTheme: COLORS_THEMES[sysTheme],
+        sysTheme: sysTheme,
+      });
+    }
   },
 
   useToggleColorTheme: async () => {
-    const currentTheme = await getPublicItem(COLOR_THEME);
+    const currentTheme = get().currentTheme;
     const sysTheme = themeService.useSysColorTheme();
 
     if (currentTheme) {
+      const nextTheme = currentTheme.isDark ? LIGHT : DARK;
+
       set({
-        currentTheme: currentTheme.isDark
-          ? COLORS_THEMES[LIGHT]
-          : COLORS_THEMES[DARK],
-        sysTheme: currentTheme.isDark ? LIGHT : DARK,
+        currentTheme: COLORS_THEMES[nextTheme],
+        sysTheme: nextTheme,
       });
+
+      setPublicItem(COLOR_THEME, nextTheme);
     } else {
       const nextTheme = sysTheme === DARK ? LIGHT : DARK;
 
@@ -43,6 +47,7 @@ export const useThemeStorage = create((set, get) => ({
         currentTheme: COLORS_THEMES[nextTheme],
         sysTheme: nextTheme,
       });
+
       setPublicItem(COLOR_THEME, nextTheme);
     }
   },

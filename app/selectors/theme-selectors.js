@@ -1,4 +1,5 @@
 export const fetchStorageData = state => state.fetchStorageData;
+export const useToggleColorTheme = state => state.useToggleColorTheme;
 
 export const sysTheme = state => state.sysTheme;
 

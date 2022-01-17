@@ -8,7 +8,7 @@ import {smallBoldText} from '../constants/text-styles';
 
 import i18n from '../i18n/default';
 
-const ConfirmedCaseItem = ({date, cases, itemHeight}) => {
+const ConfirmedCaseItem = React.memo(({date, cases, itemHeight}) => {
   const hightLightBColor = useThemeStorage(
     colorThemeSelectors.hightLightBColor,
   );
@@ -26,7 +26,7 @@ const ConfirmedCaseItem = ({date, cases, itemHeight}) => {
       <Text>{date.slice(0, date.indexOf('T'))}</Text>
     </View>
   );
-};
+});
 
 export default ConfirmedCaseItem;
 

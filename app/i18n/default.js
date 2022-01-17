@@ -34,4 +34,8 @@ export default {
    * Confirmed cases Item Component
    */
   cases: 'Confirmed daily cases: ',
+  /**
+   * Settings Screen
+   */
+  settings: '「SETTINGS」',
 };
