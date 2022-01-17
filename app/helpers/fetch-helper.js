@@ -1,7 +1,12 @@
 import {devLogger} from '../services/log-service';
 
 /**
- *
+ * easyFetch
+ * ---
+ * @param {String} uri
+ * @param {GET || POST} method
+ * @param {Any} params
+ * @returns
  */
 export const easyFetch = async (uri, method = 'GET', params) => {
   try {
