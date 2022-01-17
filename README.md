@@ -66,6 +66,18 @@ React Native's Animated library reimplemented
 React Native Cross-Platform WebView
 ```
 
+- generator-rn-toolbox + ImageMagick
+
+```
+To generate app icons
+```
+
+- react-native-vector-icons
+
+```
+vector icons for react native
+```
+
 ## Scripts
 
 - clean-instal.sh
