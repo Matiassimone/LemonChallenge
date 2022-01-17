@@ -6,7 +6,7 @@ import * as colorThemeSelectors from '../selectors/theme-selectors';
 
 import {smallBoldText} from '../constants/text-styles';
 
-const CountryElement = ({country, itemHeight, onPressCallback}) => {
+const CountryElement = React.memo(({country, itemHeight, onPressCallback}) => {
   const hightLightBColor = useThemeStorage(
     colorThemeSelectors.hightLightBColor,
   );
@@ -25,7 +25,7 @@ const CountryElement = ({country, itemHeight, onPressCallback}) => {
       <Text>{country.Country}</Text>
     </TouchableOpacity>
   );
-};
+});
 
 export default CountryElement;
 

@@ -42,7 +42,11 @@ export const useCountriesStorage = create((set, get) => ({
     selectedCountry
       ? set({selectedCountry: selectedCountry})
       : set({
-          selectedCountry: get().countries[0],
+          selectedCountry: {
+            Country: 'ALA Aland Islands',
+            ISO2: 'AX',
+            Slug: 'ala-aland-islands',
+          },
         });
 
     await fetchSelectedCountryCases();

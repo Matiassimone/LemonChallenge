@@ -7,6 +7,8 @@ import {
   deleteSecureItem,
 } from '../services/secure-storage-service';
 
+import {removeAllPublicItems} from '../services/public-storage-service';
+
 import {devLogger} from '../services/log-service';
 
 import {USER_INFO} from '../constants/storage-keys';
@@ -95,9 +97,11 @@ export const useSignStore = create(set => ({
       devLogger('useSignOut', error, true);
       set({error: data});
     } else {
-      devLogger('useSignOut', userInfoModel, true);
+      devLogger('useSignOut', userInfoModel, false);
       set({userInfo: userInfoModel, signed: false});
+
       deleteSecureItem(USER_INFO);
+      removeAllPublicItems();
     }
   },
 }));
