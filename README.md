@@ -1,5 +1,8 @@
 # LemonChallenge - [COVID-19] Dashboard.
 
+Video: https://drive.google.com/file/d/1CTrvCJn1p2_osnlxxxQDFo1u__YKzbmu/view?usp=sharing
+
+
 ---
 ## Color theme and general styling inspiration.
 
