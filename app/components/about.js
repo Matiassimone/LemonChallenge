@@ -25,7 +25,7 @@ const About = () => {
         <Text style={[smallBoldText, {color: contrastColor}]}>
           Made with ❤️,
           {'\n'}
-          Matias Simone 2021.
+          Matias Simone 2022.
         </Text>
         <Icon name="github" color={contrastColor} size={36} />
       </TouchableOpacity>
